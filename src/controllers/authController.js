@@ -8,7 +8,7 @@ const serviceAccount = require('D:/Internship-webdev/otpnew3/src/internship-546f
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  // Add more Firebase config options here
+
 });
 
 const db = admin.firestore();
@@ -64,12 +64,31 @@ module.exports = {
       const token = jwtUtils.generateJWT(phoneNumber);
       
 
-      // You can implement more user-related logic here
 
       res.json({ token });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Login failed.' });
     }
+  },
+  // Logout user
+  logout: async (req, res) => {
+  try {
+    // Assuming you're using cookies or headers for JWT storage
+
+    // Clear the JWT cookie if using cookies
+    res.clearCookie('jwt', {
+      // Add additional options as needed
+      httpOnly: true, // Prevent JavaScript access to the cookie
+      secure: true,   // Send the cookie only over HTTPS
+      sameSite: 'none' // Allow cross-site access
+    });
+
+    // Send response
+    res.json({ message: 'Logged out successfully' });
+  } catch (error) {
+    // Handle any errors that might occur during logout
+    res.status(500).json({ error: 'An error occurred during logout' });
   }
+}
 };
