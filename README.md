@@ -57,6 +57,10 @@
 5. Log out a user using the `/logout` endpoint.
 
 ## Working Video
+https://github.com/Abhi-AIML/Cohort-Intern-challenge/assets/136588531/d678c1e2-9e63-4f98-99ef-959cc4a40ec8
+
+
+
 
 
 
